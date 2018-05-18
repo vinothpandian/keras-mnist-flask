@@ -8,7 +8,7 @@ from binascii import a2b_base64
 
 app = Flask(__name__)
 CORS(app, resources={
-     r"/predict": {"origins": ["http://vinothpandian.me", "http://vinothpandian.github.io/"]}})
+     r"/predict": {"origins": "http://vinothpandian.me"}})
 model = load_model('models/mnist_model.h5')
 model._make_predict_function()  # REMEMBER
 
