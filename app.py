@@ -7,7 +7,8 @@ import numpy as np
 from binascii import a2b_base64
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={
+     r"/predict": {"origins": ["vinothpandian.me", "vinothpandian.github.io"]}})
 model = load_model('models/mnist_model.h5')
 model._make_predict_function()  # REMEMBER
 
@@ -19,6 +20,7 @@ def save_image(image_data, fileName):
 
 
 @app.route("/")
+@cross_origin()
 def index():
     return "Flask API for serving MNIST CNN model created using Keras"
 
