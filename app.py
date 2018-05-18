@@ -15,7 +15,7 @@ model._make_predict_function()  # REMEMBER
 
 def save_image(image_data, fileName):
     binary_data = a2b_base64(image_data)
-    with open("fileName", "wb") as fh:
+    with open(fileName, "wb") as fh:
         fh.write(binary_data)
 
 
@@ -28,7 +28,7 @@ def index():
 @app.route("/predict", methods=['POST'])
 def predict():
     if request.method == 'POST':
-        fileName = "output.jpg"
+        fileName = "tmp/output.jpg"
         data = request.get_json()
         img_data = data.get('imageURL')
         save_image(img_data, fileName)
